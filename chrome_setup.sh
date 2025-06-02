@@ -18,3 +18,4 @@ mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
 chmod +x /usr/bin/chromedriver
 
 echo "Chrome y ChromeDriver instalados correctamente"
+echo "Ruta de google-chrome: $(which google-chrome)"
