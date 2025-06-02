@@ -1,21 +1,19 @@
 #!/bin/bash
 
-# Instalar Google Chrome estable (última versión estable)
-wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# Actualizar paquetes primero
 apt-get update
-apt-get install -y ./google-chrome-stable_current_amd64.deb
 
-# Mostrar versión instalada
-CHROME_VERSION=$(google-chrome --version)
-echo "Versión de Chrome instalada: $CHROME_VERSION"
+# Instalar wget y unzip por si no están
+apt-get install -y wget unzip
 
-# Descargar y configurar ChromeDriver versión 137.0.7151.55 (compatible con Chrome 137)
-CHROMEDRIVER_VERSION="137.0.7151.55"
+# Descargar e instalar Google Chrome estable versión 137
+wget -q https://storage.googleapis.com/chrome-for-testing/137.0.7151.56/linux64/chrome-linux64.zip
+unzip -o chrome-linux64.zip -d /usr/bin/
+chmod +x /usr/bin/chrome-linux64/chrome
 
-wget -q https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip
-unzip chromedriver-linux64.zip
-mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
-chmod +x /usr/bin/chromedriver
+# Descargar ChromeDriver versión 137.0.7151.56
+wget -q https://chromedriver.storage.googleapis.com/137.0.7151.56/chromedriver-linux64.zip
+unzip -o chromedriver-linux64.zip -d /usr/bin/
+chmod +x /usr/bin/chromedriver-linux64/chromedriver
 
-echo "Chrome y ChromeDriver instalados correctamente"
-echo "Ruta de google-chrome: $(which google-chrome)"
+echo "Chrome y ChromeDriver versión 137 instalados correctamente"
