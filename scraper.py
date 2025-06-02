@@ -1,4 +1,3 @@
-
 import pandas as pd
 import time
 from selenium import webdriver
@@ -12,14 +11,14 @@ import io
 
 def generar_excel(actualizacion="Última actualización"):
     chrome_options = Options()
-    chrome_options.binary_location = "/usr/bin/google-chrome"  # Ajustar si cambia ubicación
+    chrome_options.binary_location = "/usr/bin/chrome-linux64/chrome"
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--window-size=1920,1080")
 
-    service = Service("/usr/bin/chromedriver")  # Ajustar si cambia ubicación
+    service = Service("/usr/bin/chromedriver-linux64/chromedriver")
     driver = webdriver.Chrome(service=service, options=chrome_options)
     wait = WebDriverWait(driver, 20)
 
